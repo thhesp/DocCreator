@@ -36,4 +36,13 @@ public abstract class DocComment {
 	public String getDescription(){
 		return description;
 	}
+	
+	public String toString(){
+		
+		String output = "\nName: " +name + "\n" +
+						" Type " + type + "\n" +
+						" Description " + description +"\n";
+		
+		return output;
+	}
 }

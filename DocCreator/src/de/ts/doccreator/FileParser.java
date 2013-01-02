@@ -24,6 +24,7 @@ public class FileParser {
 	private void extract(){
 		String tail = extractFileComment();
 		extractFunction(tail);
+		System.out.println("File: " + filename + " Functioncount: " + functions.size());
 	}
 
 	private String extractFileComment() {
@@ -42,11 +43,10 @@ public class FileParser {
 	}
 
 	private void extractFunction(String tail) {
-		if(tail.indexOf("/**") >= 0){
+		if(tail.indexOf("/**") != -1 && tail.indexOf("**/") != -1){
 			int start = tail.indexOf("/**");
 			int end = tail.indexOf("**/");
 			end += 3;
-			System.out.println("Substring start: " + start +" and end: "+end);
 			functions.add(tail.substring(start, end));
 			extractFunction(tail.substring(end));
 		}
@@ -71,7 +71,7 @@ public class FileParser {
 		
 		ArrayList<String[]> parameters = extractFunctionParameters(function);
 		for(String[] s: parameters){
-			func.addParameters(s[0], s[1]);
+			func.addParameters(s[1], s[0]);
 		}
 		
 		return func;
@@ -127,20 +127,24 @@ public class FileParser {
 		// @param: paramtype paramname;
 		// @param: paramtype paramname;
 		// @param: paramtype paramname;
-		int start = 0;
-		int end = 0;
+
 		ArrayList<String[]> parameters = new ArrayList<String[]>();
-		
-		while(function.indexOf("@param", end) != -1){
-			start = function.indexOf("@param");
-			end =  function.indexOf(";", start);
-			start += 7;
-			String substring = function.substring(start, end);
-			substring = substring.trim();
-			parameters.add(substring.split(" "));
+		if(function.contains("@param")){
+			extractFunctionParameter(function, parameters);
 		}
-		
 		return parameters;
+	}
+	
+	private void extractFunctionParameter(String function, ArrayList<String[]> parameters){
+		int start = function.indexOf("@param");
+		int end = function.indexOf(";", start);
+		start += 7;
+		String substring = function.substring(start, end);
+		parameters.add(substring.split("-"));
+		String tail = function.substring(end+1);
+		if(tail.contains("@param")){
+			extractFunctionParameter(tail, parameters);
+		}
 	}
 	
 	private String extractFunctionReturnType(String function){

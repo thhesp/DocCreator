@@ -17,5 +17,13 @@ public class DocVar {
 	public String getName(){
 		return name;
 	}
+	
+	public String toString(){
+		
+		String output = "\nVarName: " +name + "\n" +
+						" VarType " + type + "\n";
+		
+		return output;
+	}
 
 }

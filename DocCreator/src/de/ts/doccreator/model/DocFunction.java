@@ -62,14 +62,12 @@ public class DocFunction extends DocComment {
 		int end = result.indexOf("@}", start);
 		String paramTemplate = result.substring(start, end+2);
 		String parametersString = generateParametersString(paramTemplate);
-		
 		result = result.replace(paramTemplate, parametersString);
 		
 		start = result.indexOf("{@SummaryParameters");
 		end = result.indexOf("@}", start);
 		String sumParamTemplate = result.substring(start, end+2);
-		String sumParametersString = generateParametersString(sumParamTemplate);
-		
+		String sumParametersString = generateSummaryParametersString(sumParamTemplate);
 		if(parametersString == ""){
 			result = result.replace(sumParamTemplate, "<dd>none</dd>");
 		}else{
@@ -90,7 +88,6 @@ public class DocFunction extends DocComment {
 		int end = result.indexOf("@}", start);
 		String paramTemplate = result.substring(start, end+2);
 		String parametersString = generateParametersString(paramTemplate);
-		
 		result = result.replace(paramTemplate, parametersString);
 		
 		return result;
@@ -105,13 +102,12 @@ public class DocFunction extends DocComment {
 		pureTemplate = pureTemplate.trim();
 		String result = "";
 		for(DocVar var : parameters){
-			result += pureTemplate.replace("{Paramtype}", var.getType()).replace("{Paramname}", var.getName()) + " , ";
+			result += pureTemplate.replace("{ParamType}", var.getType()).replace("{ParamName}", var.getName() + " , ");
 		}
 		if(result.lastIndexOf(" , ") != -1){
 			int index = result.lastIndexOf(" , ");
-			result = result.substring(index);
+			result = result.substring(0,index);
 		}
-		
 		
 		return result;
 	}
@@ -125,15 +121,20 @@ public class DocFunction extends DocComment {
 		pureTemplate = pureTemplate.trim();
 		String result = "";
 		for(DocVar var : parameters){
-			result += pureTemplate.replace("{Paramtype}", var.getType()).replace("{Paramname}", var.getName()) + " , ";
+			result += pureTemplate.replace("{ParamType}", var.getType()).replace("{ParamName}", var.getName() + " , ");
 		}
 		if(result.lastIndexOf(" , ") != -1){
 			int index = result.lastIndexOf(" , ");
-			result = result.substring(index);
+			result = result.substring(0,index);
 		}
 		
 		
 		return result;
+	}
+	
+	public String toString(){
+		
+		return "";
 	}
 	
 }

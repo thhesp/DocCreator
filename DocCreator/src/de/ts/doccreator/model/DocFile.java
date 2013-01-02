@@ -94,5 +94,10 @@ public class DocFile extends DocComment {
 		result = result.replace("{Color}", color);
 		return result;
 	}
+	
+	public String toString(){
+		
+		return "";
+	}
 
 }

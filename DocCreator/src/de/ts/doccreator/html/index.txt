@@ -2,7 +2,7 @@
 <!-- NewPage -->
 <html lang="en">
 <head>
-<title>UR Walking </title>
+<title>UR Walking Dokumentation</title>
 <script type="text/javascript">
     targetPage = "" + window.location.search;
     if (targetPage != "" && targetPage != "undefined")

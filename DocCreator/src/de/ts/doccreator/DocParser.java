@@ -66,17 +66,33 @@ public class DocParser {
 	}
 	
 	private DocFile parseFile(File file) throws FileNotFoundException{
-		String filename = file.getName();
-		int end = filename.indexOf(".");
-		filename = filename.substring(0, end);
+		String filepath = file.getPath();
+		String comparepath = path.replace("/", ".").replace("\\",".");
+		filepath = filepath.replace("/", ".").replace("\\",".");
+		filepath = filepath.replace(comparepath, "");
+		int end = filepath.lastIndexOf(".");
+		String filename = filepath.substring(1, end);
 		
 		DocFile docFile = new DocFile(filename);
 	    StringBuilder text = new StringBuilder();
 	    String NL = System.getProperty("line.separator");
 	    Scanner scanner = new Scanner(file, encoding);
 	    try {
+	    	boolean found = false;
+	    	String temp = "";
 	      while (scanner.hasNextLine()){
-	        text.append(scanner.nextLine() + NL);
+	    	  String line = scanner.nextLine();
+	    	  if(line.contains("/**")){
+	    		  found = true;
+	    	  }
+	    	  if(found){
+	    		  temp += line +NL;
+	    		  if(line.contains("**/")){
+	    			  found = false;
+	    			  text.append(temp);
+	    			  temp = "";
+	    		  }
+	    	  }
 	      }
 	    }
 	    finally{

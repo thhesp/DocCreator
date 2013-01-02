@@ -19,7 +19,7 @@ Function/Classfunction:
 	@type: FUNCTION, CLASS_FUNCTION; (eines der zwei)
 	@filename: Filename; (obligatorisch)
 	@lang: PHP, JS, JAVA;
-	@param: parameterTYPE parametername; (so oft wie nötig)
+	@param: parameterTYPE-parametername; (so oft wie nötig)
 	@return: type; (int, String, etc.)
 	
 **/
@@ -32,10 +32,10 @@ mehrere Parameter:
 	@type: FUNCTION, CLASS, CLASS_FUNCTION; (eines der drei)
 	@filename: Filename; (obligatorisch)
 	@lang: PHP, JS, JAVA;
-	@param: parameterTYPE parametername; (so oft wie nötig)
-	@param: parameterTYPE parametername; (so oft wie nötig)
-	@param: parameterTYPE parametername; (so oft wie nötig)
-	@param: parameterTYPE parametername; (so oft wie nötig)
+	@param: parameterTYPE-parametername; (so oft wie nötig)
+	@param: parameterTYPE-parametername; (so oft wie nötig)
+	@param: parameterTYPE-parametername; (so oft wie nötig)
+	@param: parameterTYPE-parametername; (so oft wie nötig)
 	@return: type; (int, String, etc.)
 	
 **/
