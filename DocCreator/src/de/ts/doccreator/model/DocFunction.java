@@ -63,7 +63,19 @@ public class DocFunction extends DocComment {
 		String paramTemplate = result.substring(start, end+2);
 		String parametersString = generateParametersString(paramTemplate);
 		
-		template = template.replace(paramTemplate, parametersString);
+		result = result.replace(paramTemplate, parametersString);
+		
+		start = result.indexOf("{@SummaryParameters");
+		end = result.indexOf("@}", start);
+		String sumParamTemplate = result.substring(start, end+2);
+		String sumParametersString = generateParametersString(sumParamTemplate);
+		
+		if(parametersString == ""){
+			result = result.replace(sumParamTemplate, "<dd>none</dd>");
+		}else{
+			result = result.replace(sumParamTemplate, sumParametersString);
+		}
+	
 		
 		return result;
 	}
@@ -79,7 +91,7 @@ public class DocFunction extends DocComment {
 		String paramTemplate = result.substring(start, end+2);
 		String parametersString = generateParametersString(paramTemplate);
 		
-		template = template.replace(paramTemplate, parametersString);
+		result = result.replace(paramTemplate, parametersString);
 		
 		return result;
 	}
@@ -90,6 +102,26 @@ public class DocFunction extends DocComment {
 		}
 		
 		String pureTemplate = paramTemplate.replace("{@Parameters", "").replace("@}", "");
+		pureTemplate = pureTemplate.trim();
+		String result = "";
+		for(DocVar var : parameters){
+			result += pureTemplate.replace("{Paramtype}", var.getType()).replace("{Paramname}", var.getName()) + " , ";
+		}
+		if(result.lastIndexOf(" , ") != -1){
+			int index = result.lastIndexOf(" , ");
+			result = result.substring(index);
+		}
+		
+		
+		return result;
+	}
+	
+	private String generateSummaryParametersString(String paramTemplate){
+		if(parameters.size() == 0){
+			return "";
+		}
+		
+		String pureTemplate = paramTemplate.replace("{@SummaryParameters", "").replace("@}", "");
 		pureTemplate = pureTemplate.trim();
 		String result = "";
 		for(DocVar var : parameters){

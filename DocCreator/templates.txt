@@ -32,6 +32,10 @@ FunctionPlaceholder (function_template.txt) :
 	{ParamType}
 	{ParamName}
 @}
+{@SummaryParameters
+	{ParamType}
+	{ParamName}
+@}
 {Description}
 {Language}
 {ReturnType}
