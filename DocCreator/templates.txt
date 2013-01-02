@@ -1,0 +1,48 @@
+Overview Level:
+
+
+Link in OverviewFrame (file_link_overview_frame.txt):
+{Filename}
+
+Left Overview Frame (overview-frame_template.txt):
+{Filelist} (Liste aller Files)
+
+FileSummary Placeholder(overview_summary_single.txt):
+{Color} ("rowColor" oder "altColor)
+{Filename}
+{Description}
+
+Overview Summary(overview-summary_template.txt):
+{Timestamp}
+{Filesummary} (mit Filesummary Placeholder erstellt)
+
+File Level:
+
+FilePlaceholder (file_template.txt):
+{Timestamp}
+{Filename}
+{Path}
+{Description}
+{MethodSummary}
+{MethodDetails}
+
+FunctionPlaceholder (function_template.txt) :
+{Functionname}
+{@Parameters
+	{ParamType}
+	{ParamName}
+@}
+{Description}
+{Language}
+{ReturnType}
+
+FunctionSummary Placeholder (function_summary_template.txt):
+{Color} ("rowColor" oder "altColor)
+{ReturnType}
+{Filename}
+{Functionname}
+{@Parameters
+	{Paramtype}
+	{Paramname}
+@}
+

@@ -1,0 +1,15 @@
+<a name="{Functionname}">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>{Functionname}</h4>
+<pre>{ReturnType}&nbsp;{Functionname}({ParamType}&nbsp;{ParamName})</pre>
+<div class="block">{Description}</div>
+<dl>
+<dt><span class="strong">Language:</span></dt><dd>{Language}</dd>
+<dt><span class="strong">Parameters:</span></dt>{@Parameters <dd><code>{ParamType}</code> - {ParamName}</dd> @}
+<dt><span class="strong">Returns:</span></dt><dd>{ReturnType}</dd>
+</dl>
+</li>
+</ul>

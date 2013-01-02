@@ -1,0 +1,10 @@
+Folder structure:
+
+./
+index.html
+overview-summary.html
+overview-frame.html
+/files/
+	file1.html
+	file2.html
+	file3.html
